@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Página inicial</title>
+</head>
+<body>
+    <table>
+        <h3>Dados do carro</h3>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Cor</th>
+                <th>Combustível</th>
+                <th>Ano</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for carro in carros %}
+                <tr>
+                    <td>{{carro.id}}</td>
+                    <td>{{carro.marca}}</td>
+                    <td>{{carro.modelo}}</td>
+                    <td>{{carro.cor}}</td>
+                    <td>{{carro.combustivel}}</td>
+                    <td>{{carro.ano}}</td>
+                    <td><a href="">Editar</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <div >
+            <button>Adicionar carro</button>
+        </div>
+    </table>
+</body>
+</html>
+
