@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Página inicial</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
+
     <table>
         <h3>Dados do carro</h3>
         <thead>
@@ -31,10 +28,11 @@
                 </tr>
             {% endfor %}
         </tbody>
-        <div >
+        <div>
+            <a href="{{ url_for('cadastro') }}">
             <button>Adicionar carro</button>
+            </a>
         </div>
     </table>
-</body>
-</html>
 
+{% endblock %}
