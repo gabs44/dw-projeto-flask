@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <title>Página inicial</title>
 </head>
-<body>
-    
+<body> 
+    <header>
+        {% if session['username'] != None %}
+        <a href="{{url_for('logout')}}"> Sair</a>
+        {% else %}
+        <a href="{{url_for('autenticar')}}"> Entrar</a>
+        {% endif %}
+    </header>  
     <div> 
         {% block content %}
         {% endblock %}

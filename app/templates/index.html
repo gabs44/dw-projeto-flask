@@ -1,38 +1,61 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 {% extends 'base.html' %}
 
 {% block content %}
 
-    <table>
-        <h3>Dados do carro</h3>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Cor</th>
-                <th>Combustível</th>
-                <th>Ano</th>
-                <th>Editar</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for carro in carros %}
+
+    <div class='container'>
+        <form method="GET">
+            <div class="offset-md-4">
+                <input name='ID' type="text" placeholder="Digite o ID" >
+                <button type="submit">Buscar</button>
+            </div>
+        </form>
+        <div class="col-md-4 offset-md-3" >
+            <table class='table table-responsive table-bordered border-dark table-hover'>
+            <div class="offset-md-4">
+                <h3 >Dados do carro</h3>
+            </div>
+            <thead class="table-secondary">
                 <tr>
-                    <td>{{carro.id}}</td>
-                    <td>{{carro.marca}}</td>
-                    <td>{{carro.modelo}}</td>
-                    <td>{{carro.cor}}</td>
-                    <td>{{carro.combustivel}}</td>
-                    <td>{{carro.ano}}</td>
-                    <td><a href="">Editar</a></td>
+                    <th>Id</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Cor</th>
+                    <th>Combustivel</th>
+                    <th>Ano</th>
+                    {% if session['username'] != None %}
+                    <th>Editar</th>
+                    {% endif %}
                 </tr>
-            {% endfor %}
-        </tbody>
-        <div>
-            <a href="{{ url_for('cadastro') }}">
-            <button>Adicionar carro</button>
-            </a>
-        </div>
-    </table>
+            </thead>
+            <tbody>
+                <class class='container'>
+                {% for carro in carros %}
+                    <tr>
+                        <td>{{carro.id}}</td>
+                        <td>{{carro.marca}}</td>
+                        <td>{{carro.modelo}}</td>
+                        <td>{{carro.cor}}</td>
+                        <td>{{carro.combustivel}}</td>
+                        <td>{{carro.ano}}</td>
+                        {% if session['username'] != None %}
+                        <td><a href="{{ url_for('editar', id=carro.id) }}">Editar</a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </class>
+            </tbody>
+            </div>
+        </table>
+        {% if session['username'] != None %}
+            <div class="offset-md-5">
+                <a href="{{ url_for('cadastro') }}">
+                <button>Adicionar carro</button>
+                </a>
+            </div>
+            {% endif %}
+    </div>
+</div>
 
 {% endblock %}

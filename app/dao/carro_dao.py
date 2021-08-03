@@ -7,7 +7,7 @@ class CarroDao:
     def listar(self):
         conexao = Conexao().get_connection()
         cursor = conexao.cursor(cursor_factory=RealDictCursor)
-        cursor.execute('select * from carros')
+        cursor.execute('select * from carros order by id')
         resultado = cursor.fetchall()
         conexao.close()
         return converter_carros(resultado)

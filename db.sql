@@ -15,5 +15,4 @@ Create table usuarios(
 );
 
 
-select * from carros;
-select * from usuarios;
+insert into usuarios values('admin', '12345');
